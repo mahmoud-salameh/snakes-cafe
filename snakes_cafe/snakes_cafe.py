@@ -35,29 +35,36 @@ Unicorn Tears
 ***********************************
 ** What would you like to order? **
 ***********************************
->"""
+"""
 )
 
 menu=[
-    'wings', 'cookies', 'spring rolls', 'salmon', 'steak', 'meat tornado', 'a literal garden', 'ice Cream', 'cake', 'pie', 'coffee', 'tea', 'unicorn tears'
+    'wings', 'cookies', 'spring rolls', 
+    'salmon', 'steak', 'meat tornado', 
+    'a literal garden', 'ice Cream', 
+    'cake', 'pie', 'coffee', 'tea', 
+    'unicorn tears'
 ]
+
 Orderlist=[]
 nameInList=[]
-def orderHandler():
+def inputOrder():
     
-    order=input()
+    order=input('--> ')
+   
+    order = order.capitalize()
     if order.lower() in menu:
         Orderlist.append(order)
+       
         if order not in nameInList:
             nameInList.append(order)
-        print(f'**{Orderlist.count(order)} order of{order} have been added to your meal **')
-        orderHandler()
+        print(f'**{Orderlist.count(order)} order of {order} have been added to your meal **')
+        inputOrder()
     elif order.lower()=='quit':
-        for x in nameInList:
-            print(f'{Orderlist.count(x)} order of {x} ')
-        print('**We are working on your order**')
+        
+        for i in nameInList:
+            print(f'{Orderlist.count(i)} order of {i} ')
     elif order.lower() not in menu:
         print('**Your order is not in our menu**')
-        orderHandler()
 
-orderHandler()
+inputOrder()
